@@ -1,0 +1,117 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="movies.css">
+
+  <nav style="background-color:#404040 !important;" class="navbar fixed-top navbar-expand-lg navbar-dark bg-light">
+      <a style="color:white !important;font-weight:700;" class="navbar-brand" href="#">T.G Movie House </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home<span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Guessing Game</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#">Score Board</a>
+          </li>
+        </ul>
+        <form method="Post" action="/title" class="form-inline my-2 my-lg-0">
+          <input  class="form-control mr-sm-2" type="search" placeholder="Search" name="search" aria-label="Search">
+          <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Movie Search</button>
+        </form>
+        <button style="margin-left: 5px; font-weight: 500;" id="signup" class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#myModal" type="submit">Sign Up</button>
+        <button  style="margin-left: 5px; font-weight: 500" id="login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+       </div>
+    </nav>
+    <div id="myModal" class="modal fade" role="dialog">    
+       <div class="modal-dialog">
+        <div class="modal-content">
+         <div style="text-align: center !important;" class="modal-header">
+            <h4 style="text-align: center !important;font-weight: 800px !important;font-size: 1.5vw !important;">Sign Up</h4>
+            <button type="button" align="right" class="close" data-dismiss="modal">&times;</button>
+         </div>
+         <div class="modal-body">
+            <form method="POST" action="/Signup" >
+              <div>
+                <p style="display:inline-block;">Email id :- </p>
+                <input type="email" name="email" placeholder="tushargautam79@gmail.com" id="signup_modal" required="">
+              </div>
+              <div>
+                <p style="display:inline-block;">User name :- </p>
+                <input type="text" name="username" placeholder="tushargautam79" id="signup_modal" required="">
+              </div>
+              <div>
+                <p style="display:inline-block;">password :- </p>
+                <input type="password"  placeholder="12345678@25" id="signup_modal1" required="">
+              </div>
+              <div>
+                <p style="display:inline-block;">Confirm Password:- </p>
+                <input type="password" placeholder="12345678@25" name="password" id="signup_modal1" required="">
+              </div>
+               <button id="done" type="submit" class="btn btn-default" >Done</button>
+              <div>
+                <p  id="message"></p>
+              </div>
+            </form>
+         </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+    <div style="margin-top: 14%">
+      <h1 class="ml11">
+        <span class="text-wrapper">
+          <span class="line line1"></span>
+          <span class="letters" style="color:white">Welcome to Tushar Movie Hub</span>
+        </span>
+      </h1>
+    </div>
+    <div class="row ">
+      <div class="col-4">
+        <div id="side_bar">
+          <h1 id="head">Top Hit</h1>
+          <ul>
+            <%for(var k=0;k< web.length;k++){%>
+              <li><%=web[k]["Title"]%></li>
+              <%}%>
+          </ul>
+        </div>
+      </div>
+      <div class="col-6"> 
+        <%for(var k=0;k< web.length;k++){%>
+          <div id="content" class="row">
+            <div class="col-6">
+               <img id="poster" src= <%=web[k]["Poster"]%> >
+            </div>
+            <div id="detail" class="col-6" style="color: white">
+              <h1 style="color: #4CAF50"><%=web[k]["Title"]%></h1>
+              <h2>Year of Release: <%=web[k]["Year"]%></h2>
+              <h2>Type: <%=web[k]["Type"]%></h2>
+              <h2>IMBD Id: <%=web[k]["imdbID"]%></h2>
+                <% var mk="http://localhost:3000/id/"+web[k]["imdbID"] %>
+                <a  href= <%=mk%> >Know More</a>
+            </div>
+          </div>  
+        <%}%>
+      </div>
+      <div id="about" class="col-2">
+        <div class="column">
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script type="text/javascript" src="moviesjs.js">
+    </script>
+    <script type="text/javascript" src="movies1.js"></script>

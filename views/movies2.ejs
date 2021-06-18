@@ -1,0 +1,120 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="/movies2.css">
+  <nav style="background-color:#404040 !important;" class="navbar fixed-top navbar-expand-lg navbar-dark bg-light">
+      <a style="color:white !important;font-weight:700;" class="navbar-brand" href="#">T.G Movie House </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home<span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item"> 
+            <a class="nav-link " href="#">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Guessing Game</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#">Score Board</a>
+          </li>
+        </ul>
+        <form method="Post" action="/title" class="form-inline my-2 my-lg-0">
+          <input  class="form-control mr-sm-2" type="search" placeholder="Search" name="search" aria-label="Search">
+          <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Movie Search</button>
+        </form>
+       </div>
+    </nav>
+    <div style="margin-top: 14%">
+      <h1 class="ml11">
+        <span class="text-wrapper">
+          <span class="letters">Welcome to Tushar Movie Hub</span>
+        </span>
+      </h1>
+    </div>
+    <div class="row ">
+      <div class="col-5"> 
+         <div>
+           <img   id="poster" src=<%=web["Poster"]%>">
+         </div>
+      </div>
+      <div id="about" class="col-7">
+        <div class="column">
+          <h1><%= web["Title"]%></h1>
+          <h2><span>Plot : </span><%= web["Plot"]%></h2>
+          <h2><span>Actor : </span><%= web["Actors"]%></h2>
+          <h2><span>Genre : </span><%= web["Genre"]%></h2>
+          <h2><span>Director : </span><%= web["Director"]%></h2>
+          <div class="row">
+            <div class="col-6">
+                <h2><span>Released: </span><%= web["Released"]%></h2>
+                <h2><span>IMBD : </span><%= web["imdbRating"]%></h2>
+                <h2><span>Language: </span><%= web["Language"]%></h2>
+            </div>
+            <div class="col-6">
+                <h2><span>Run Time: </span><%= web["Runtime"]%></h2>
+                <h2><span>IMBD Votes:</span><%= web["imdbVotes"]%></h2>
+                <h2><span>Country: </span><%= web["Country"]%></h2>
+            </div>
+              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" style="display: block;text-align:center !important;margin: auto;margin-top: 2vw" data-target="#myModal1">Comment</button>
+                <div id="myModal1" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content" style="background-image: url('https://wallpaperboat.com/wp-content/uploads/2019/06/plain-black-09.jpg')">
+                      <div class="modal-header">
+                        <h1 style="text-align: center;font-weight: 600;text-shadow: 2px 2px red;color: white;font-size: 2.5em">Enter Your Valuable Comment</h1>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="modal-body">
+                           <div class="row">
+                              <div class="col-2 col-sm-2">
+                              </div>
+                              <div class="jumbotron container col-8 col-sm-8" style="margin-top: 10%;background-image: url('https://lh3.googleusercontent.com/proxy/5xs2jLXfB3MubL7kZPKkMxEqX3CKLB8vOow_qG7He_Jr51mxh3osVdOq1JjbH05gTsgJd9McKQUeIWwS99fPEH8JFIZcscKfWnWxfw81Bd8LZsHILJb0DXkZQfV3wJhjQf1yzeNnQyjtJ-RtLewaQ77XienO')">
+                                  <form action="/comment" method="Post">
+                                    <div>
+                                      <h2 style="text-align:center;color: white;font-weight: 450">Your ID</h2>
+                                      <div >
+                                        <input type="text" name="user_name" placeholder="Tushar" style="text-align:center;display:block;margin:auto;">
+                                      </div>
+                                    </div>
+                                    <div>
+                                      <h2 style="margin-top: 1%;text-align: center;font-weight: 450;color: white">Your Comment</h2>
+                                      <input type="text" name="comment" style="display:block;text-align:center;margin :auto" placeholder="Its a hit movie">
+                                    </div>
+                                    <button type="submit" class="btn btn-default" style="display:block;text-align:center !important;background-color: #4caf50;margin:auto;margin-top: .5em">Submit</button>
+                                  </form>
+                              </div>
+                                <div class="col-2 col-sm-2">
+                                </div>
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+      </div>
+    </div>
+    <div class="container" style="margin-bottom: 2em;">
+      <h1 style="text-align: center;margin-bottom: 1.5em;margin-top: 1em;color: white;text-shadow: 2px 2px red">Public Review</h1>
+        <% for(var m=0;m< user_comment.length;m++){ %>
+        <div >
+          <div style="margin-top:0.5em ;margin-left: 5em" >
+            <h2 style="color: #4caf50;font-weight: 700;font-size: 1.3em;display: inline-block;"> <%= user_comment[m]["user_name"] %> : </h2>
+            <p  style="font-size: 1.3em;font-weight: 550;display: inline-block;color: white"> <%= user_comment[m]["comment"] %> </p>
+        </div>
+        <% } %>
+      </div>
+    </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script type="text/javascript" src="/moviesjs2.js">
+    </script>
