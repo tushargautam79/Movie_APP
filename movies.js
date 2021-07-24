@@ -8,7 +8,7 @@ var passportLocalMongoose=require("passport-local-mongoose");
 var request=require("request");
 var bodyParser=require("body-parser");
 const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://Gautam79:Gautam79@cluster0.hswd9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = "mongodb+srv://Gautam79:Gautam79@cluster0.hswd9.mongodb.net/mysecondDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
