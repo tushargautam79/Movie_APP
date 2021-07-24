@@ -7,7 +7,14 @@ var LocalStrategy= require("passport-local");
 var passportLocalMongoose=require("passport-local-mongoose");
 var request=require("request");
 var bodyParser=require("body-parser");
-mongoose.connect('mongodb://localhost:27017/db');
+const { MongoClient } = require('mongodb');
+const uri = "mongodb+srv://Gautam79:Gautam79@cluster0.hswd9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 var userSchema= new mongoose.Schema({
 	email: {type:String ,required:true, unique:true},
 	username: {type:String ,required:true, unique:true},
